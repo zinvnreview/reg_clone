@@ -26,10 +26,15 @@
             background-color: #4CAF50;
             color: white;
             border: none;
-            
             padding: 5px 10px;
             border-radius: 4px;
             margin-left: 5px;
+            cursor: pointer;
+        }
+
+        /* Hiệu ứng màu sau khi copy */
+        .copied {
+            background-color: #ffeb3b !important; /* Màu vàng */
         }
 
         /* Toast notification styles */
@@ -83,17 +88,17 @@
             .then(response => response.json())
             .then(data => {
                 const tableBody = document.getElementById('accountsTableBody');
-                data.forEach(account => {
+                data.forEach((account, index) => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${data.indexOf(account) + 1}</td>  <!-- STT -->
-                        <td>${account.email}</td>
-                        <td>${account.username}</td>
-                        <td>${account.password}</td>
+                        <td>${index + 1}</td>  <!-- STT -->
+                        <td class="copy-target">${account.email}</td>
+                        <td class="copy-target">${account.username}</td>
+                        <td class="copy-target">${account.password}</td>
                         <td style="display: flex; gap: 5px;">
-                            <button class="copy-button" onclick="copyToClipboard('${account.email}', 'email')"> Email</button>
-                            <button class="copy-button" onclick="copyToClipboard('${account.username}', 'username')"> Username</button>
-                            <button class="copy-button" onclick="copyToClipboard('${account.password}', 'password')"> Password</button>
+                            <button class="copy-button" onclick="copyToClipboard(this, '${account.email}', 'email')"> Email</button>
+                            <button class="copy-button" onclick="copyToClipboard(this, '${account.username}', 'username')"> Username</button>
+                            <button class="copy-button" onclick="copyToClipboard(this, '${account.password}', 'password')"> Password</button>
                         </td>
                     `;
                     tableBody.appendChild(row);
@@ -104,9 +109,13 @@
             });
 
         // Function to copy text to clipboard
-        function copyToClipboard(text, type) {
+        function copyToClipboard(button, text, type) {
             navigator.clipboard.writeText(text).then(() => {
                 showToast(`${type.charAt(0).toUpperCase() + type.slice(1)} copied to clipboard!`);
+
+                // Xác định ô td tương ứng và đổi màu
+                const td = button.closest('td').previousElementSibling;
+                td.classList.add('copied');
             }).catch(err => {
                 console.error('Could not copy text: ', err);
             });
