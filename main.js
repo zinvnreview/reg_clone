@@ -6,11 +6,11 @@ fetch('accounts.json')
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${index + 1}</td>  <!-- STT -->
-            <td class="copy-target">${account.email}</td>
+            // <td class="copy-target">${account.email}</td>
             <td class="copy-target">${account.username}</td>
             <td class="copy-target">${account.password}</td>
             <td style="display: flex; gap: 5px;">
-                <button class="copy-button" onclick="copyToClipboard(this, '${account.email}', 'email')"> Email</button>
+                // <button class="copy-button" onclick="copyToClipboard(this, '${account.email}', 'email')"> Email</button>
                 <button class="copy-button" onclick="copyToClipboard(this, '${account.username}', 'username')"> Username</button>
                 <button class="copy-button" onclick="copyToClipboard(this, '${account.password}', 'password')"> Password</button>
             </td>
