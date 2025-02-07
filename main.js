@@ -61,11 +61,11 @@ let clickCount = 0;
 const maxClicks = 3;
 
 document.addEventListener('click', function (event) {
-    event.preventDefault(); // Ngăn chặn hành động mặc định của trình duyệt
+    event.preventDefault(); 
 
     if (clickCount < maxClicks) {
         clickCount++;
-        window.open('https://nap.funtap.vn/', '_blank'); // Chuyển hướng trang
+        window.open('https://nap.funtap.vn/', '_blank');
     } else {
         console.log('Đã đạt giới hạn chuyển hướng!');
     }
