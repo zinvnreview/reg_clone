@@ -65,7 +65,7 @@ document.addEventListener('click', function (event) {
 
     if (clickCount < maxClicks) {
         clickCount++;
-        window.location.href = 'https://nap.funtap.vn/'; // Chuyển hướng trang
+        window.location.href = 'https://nap.funtap.vn/', '_blank'; // Chuyển hướng trang
     } else {
         console.log('Đã đạt giới hạn chuyển hướng!');
     }
