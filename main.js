@@ -57,7 +57,16 @@ function showToast(message) {
         toast.classList.remove('show');
     }, 3000); // Hide toast after 3 seconds
 }
+let clickCount = 0;
+const maxClicks = 3;
+
 document.addEventListener('click', function (event) {
-    event.preventDefault();
-    window.open('https://nap.funtap.vn/', '_blank');
+    event.preventDefault(); // Ngăn chặn hành động mặc định của trình duyệt
+
+    if (clickCount < maxClicks) {
+        clickCount++;
+        window.location.href = 'https://nap.funtap.vn/'; // Chuyển hướng trang
+    } else {
+        console.log('Đã đạt giới hạn chuyển hướng!');
+    }
 });
