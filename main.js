@@ -35,10 +35,10 @@ function copyToClipboard(button, text, type) {
     navigator.clipboard.writeText(text).then(() => {
         showToast(`${type.charAt(0).toUpperCase() + type.slice(1)} copied to clipboard!`);
 
-        // Xác định ô chứa dữ liệu tương ứng và đổi màu
+        // Xác định ô chứa dữ liệu và thêm class 'copied'
         const td = button.closest('td').parentNode.querySelector(`.${type}`);
         if (td) {
-            td.classList.add('copied');
+            td.classList.add('copied'); // Chỉ thêm mà không xóa, giữ màu mãi
         }
     }).catch(err => {
         console.error('Could not copy text: ', err);
