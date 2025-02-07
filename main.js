@@ -39,7 +39,6 @@ function copyToClipboard(button, text, type) {
         const td = button.closest('td').parentNode.querySelector(`.${type}`);
         if (td) {
             td.classList.add('copied');
-            setTimeout(() => td.classList.remove('copied'), 1500); // Xóa màu sau 1.5s
         }
     }).catch(err => {
         console.error('Could not copy text: ', err);
