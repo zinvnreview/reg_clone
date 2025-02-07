@@ -15,7 +15,7 @@ fetch('accounts.json')
         data.forEach((account, index) => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td>${index + 1}</td>  <!-- STT -->
+                <td class="copy-target username password>${index + 1}</td>  <!-- STT -->
                 <td class="copy-target username">${account.username}</td>
                 <td class="copy-target password">${account.password}</td>
                 <td style="display: flex; gap: 5px;">
