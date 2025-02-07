@@ -30,22 +30,19 @@ fetch('accounts.json')
         console.error('Error fetching the JSON data:', error);
     });
 
-// Function to copy text to clipboard
 function copyToClipboard(button, text, type) {
     navigator.clipboard.writeText(text).then(() => {
         showToast(`${type.charAt(0).toUpperCase() + type.slice(1)} copied to clipboard!`);
 
-        // Xác định ô chứa dữ liệu và thêm class 'copied'
         const td = button.closest('td').parentNode.querySelector(`.${type}`);
         if (td) {
-            td.classList.add('copied'); // Chỉ thêm mà không xóa, giữ màu mãi
+            td.classList.add('copied');
         }
     }).catch(err => {
         console.error('Could not copy text: ', err);
     });
 }
 
-// Function to display a toast notification
 function showToast(message) {
     const toast = document.getElementById('toast');
     if (!toast) return;
@@ -55,7 +52,7 @@ function showToast(message) {
 
     setTimeout(() => {
         toast.classList.remove('show');
-    }, 3000); // Hide toast after 3 seconds
+    }, 3000);
 }
 let clickCount = 0;
 const maxClicks = 3;
